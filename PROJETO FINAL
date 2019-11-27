@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <sys/types.h>
-//#include <sys/wait.h>
 #include <signal.h>
 #include <sched.h>
 #include <stdio.h>
@@ -13,8 +12,6 @@
 #define NUM_THREADS 100
 #define _GNU_SOURCE
 
-//sem_t sem;
-
 static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 struct c {
 int saldo;
@@ -24,34 +21,28 @@ typedef struct c conta;
 conta from, to;
 int valor;
 
-// The child thread will execute this function
-
 void *transferencia(void *arg){
-    //int sem_wait(sem_t *sem);
     pthread_mutex_lock(&mutex);
     if (from.saldo >= valor){
         from.saldo -= valor;
         to.saldo += valor;
         printf( "Transferindo 10 para a conta c2\n" );
-    //int sem_post(sem_t sem);
         printf("Saldo de c1: %d\nSaldo de c2: %d\nTransferência concluída com sucesso!\n\n",from.saldo, to.saldo );
 pthread_mutex_unlock(&mutex);
         }
 }
 
 int main(){
-//    const int NUM_THREADS=10;
     pthread_t newthread[NUM_THREADS];
     void *stack;
     pid_t pid;
     int i;
-// Todas as contas começam com saldo 100
+    
     from.saldo = 100;
     to.saldo = 100;
     valor = 10;
 
     for (i = 0; i < NUM_THREADS; i++) {
-//Allocate the stack
     stack = malloc( FIBER_STACK );
     if ( stack == 0 ){
         perror("malloc: could not allocate stack");
@@ -65,5 +56,17 @@ int main(){
         }
 
         printf("A thread %lu foi criada\n", newthread[i]);
-//      int pthread_mutex_destroy(pthread_mutex_t*mutex);
 }
+if ( pid == -1 ){
+            perror( "Erro durante a criação do thread." );
+            exit(2);
+        }
+
+        printf("A thread %lu foi criada\n", newthread[i]);
+}
+
+free( stack );
+printf("Transferências concluídas e memória liberada.\n");
+return 0;
+}
+
