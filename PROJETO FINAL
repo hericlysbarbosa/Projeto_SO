@@ -35,8 +35,7 @@ int main(){
     pthread_t newthread[NUM_THREADS];
     void *stack;
     pid_t pid;
-    int i;
-    
+    int i; 
     from.saldo = 100;
     to.saldo = 100;
     valor = 10;
