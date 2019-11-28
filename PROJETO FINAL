@@ -61,7 +61,7 @@ int main(){
             exit(2);
         }
 
-        printf("A thread %lu foi criada\n", newthread[i]);
+        printf("A thread %lu foi criada\n", &newthread[i]);
        
 }
 
