@@ -42,10 +42,10 @@ int main(){
     from.saldo = 100;
     to.saldo = 100;
     valor = 10;
+    stack = malloc( FIBER_STACK );
     
     for (i = 0; i < NUM_THREADS; i++) {
    
-    stack = malloc( FIBER_STACK );
     pthread_mutex_lock(&mutex);
     if ( stack == 0 ){
         perror("malloc: could not allocate stack");
