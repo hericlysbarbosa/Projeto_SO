@@ -1,8 +1,4 @@
-#include <stdlib.h>
 #include <malloc.h>
-#include <sys/types.h>
-#include <signal.h>
-#include <sched.h>
 #include <stdio.h>
 #include <pthread.h>
 #define _OPEN_THREADS
@@ -26,7 +22,7 @@ void *devolve(void *arg){
 	if (to.saldo>=valor){
 		to.saldo-=valor;
 		from.saldo+=valor;
-		printf( "Transferindo 10 para a conta c1\n" );
+		printf( "Transferindo +10 para a conta c1\n" );
         printf("Saldo de c1: %d\nSaldo de c2: %d\nTransferência concluída com sucesso!\n\n",from.saldo, to.saldo );
 	}
 pthread_mutex_unlock(&mutex);
@@ -37,14 +33,14 @@ void *transferencia(void *arg){
     if (from.saldo >= valor){
         from.saldo -= valor;
         to.saldo += valor;
-        printf( "Transferindo 10 para a conta c2\n" );
+        printf( "Transferindo +10 para a conta c2\n" );
         printf("Saldo de c1: %d\nSaldo de c2: %d\nTransferência concluída com sucesso!\n\n",from.saldo, to.saldo );
         }
     pthread_mutex_unlock(&mutex);
 }
 
 int main(){
-
+	
     pthread_t newthread[NUM_THREADS];
     void *stack;
     pid_t pid;
@@ -54,7 +50,8 @@ int main(){
     valor = 10;
     int op;
     stack = malloc( FIBER_STACK );
-    printf("Se o dinheiro for de 1 > 2: digite [ 1 ]\nSe o dinheiro for de 2 > 1: digite [ 2 ] \n\n");
+    enunciado:
+    printf("\n\nSe o dinheiro for de 1 > 2: digite [ 1 ]\nSe o dinheiro for de 2 > 1: digite [ 2 ] \n\n");
     scanf("%d", &op);
     
     if (op==1){
@@ -93,6 +90,10 @@ int main(){
 
         printf("A thread %lu que executara: \n", &newthread[i]);
        }
+	}
+	if (op!=1 && op!=2){
+		printf("Valor invalido. Tenta novamente.");
+	goto enunciado;
 	}
 free ( stack );
 return 0;
