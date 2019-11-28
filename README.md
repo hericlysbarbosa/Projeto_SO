@@ -66,7 +66,7 @@ printf("Transferências concluídas e memória liberada.\n");
 return 0;
 }
 
-##Modificações inclusas ao projeto:
+##`Modificações inclusas ao projeto:`
 
 ## 1: `#include <pthreads.h>` 
 Foi incluso por ser uma biblioteca que me permitiria trabalhar com ambas as plataformas, tanto 
