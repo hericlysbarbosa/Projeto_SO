@@ -111,14 +111,14 @@ seu resultado, sendo que o mesmo pode ser alterado durante sua execução.
 ## 10: `printf("A thread %lu foi criada\n", &newthread[i]);`
 Aqui ele printará a thread que foi gerada.
 
-##Executar o programa.
+##`Executar o programa.`
 Tutorial em Linux:
 1- Ao abrir o terminal, coloque " mkdir " o que lhe permitirá criar um diretório. Exemplo: lab/projetofinal;
 2- Coloque " cd " e o nome do diretório criado para entrar no mesmo.
 3- Ao tentar compilar o programa, como utilizamos <pthread> deve-se incluir " -lpthread ". exemplo: gcc projetoFINAL -lpthread -o teste
 4- Por fim basta escrever " ./teste " ou ./ e o nome acrescentado.
 
-##Como saber se funcinou?
+##`Como saber se funcinou?`
 Ao fim do programa, pode-se reparar que uma das contas estará zerada enquanto a outra receberá todo o valor que estava presente
 na outra conta (caso o teste seja feito com o valor inicial: 100).
 
