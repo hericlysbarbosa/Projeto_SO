@@ -111,6 +111,10 @@ seu resultado, sendo que o mesmo pode ser alterado durante sua execução.
 ## 10: `printf("A thread %lu foi criada\n", &newthread[i]);`
 Aqui ele printará a thread que foi gerada.
 
+## 11: `goto enunciado; / enunciado:`
+Goto lhe permite pegar o código em determinado ponto e joga-lo em um distindo, sendo que " goto enuncado; "
+sever para atribuir onde ele será enviado para outro ponto e " enunciado: " onde o código voltará a executar.
+
 ##`Executar o programa.`
 Tutorial em Linux:
 1- Ao abrir o terminal, coloque " mkdir " o que lhe permitirá criar um diretório. Exemplo: lab/projetofinal;
