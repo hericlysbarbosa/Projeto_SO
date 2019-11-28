@@ -2,7 +2,71 @@
 
 Aluno: Hériclys Barbosa de Sousa
 
-Modificações inclusas ao projeto:
+
+PROGRAMA ORIGINAL:
+
+#define _GNU_SOURCE
+#include <stdlib.h>
+#include <malloc.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
+#include <sched.h>
+#include <stdio.h>
+// 64kB stack
+#define FIBER_STACK 1024*64
+struct c {
+int saldo;
+};
+typedef struct c conta;
+conta from, to;
+int valor;
+// The child thread will execute this function
+int transferencia( void *arg)
+{
+if (from.saldo >= valor){ // 2
+from.saldo -= valor;
+to.saldo += valor;
+}
+printf("Transferência concluída com sucesso!\n");
+printf("Saldo de c1: %d\n", from.saldo);
+printf("Saldo de c2: %d\n", to.saldo);
+return 0;
+}
+int main()
+{
+void* stack;
+pid_t pid;
+int i;
+// Allocate the stack
+stack = malloc( FIBER_STACK );
+if ( stack == 0 )
+{
+perror("malloc: could not allocate stack");
+exit(1);
+}
+// Todas as contas começam com saldo 100
+from.saldo = 100;
+to.saldo = 100;
+printf( "Transferindo 10 para a conta c2\n" );
+valor = 10;
+for (i = 0; i < 10; i++) {
+// Call the clone system call to create the child thread
+pid = clone( &transferencia, (char*) stack + FIBER_STACK,
+SIGCHLD | CLONE_FS | CLONE_FILES | CLONE_SIGHAND | CLONE_VM, 0 );
+if ( pid == -1 )
+{
+perror( "clone" );
+exit(2);
+}
+}
+// Free the stack
+free( stack );
+printf("Transferências concluídas e memória liberada.\n");
+return 0;
+}
+
+##Modificações inclusas ao projeto:
 
 ## 1: `#include <pthreads.h>` 
 Foi incluso por ser uma biblioteca que me permitiria trabalhar com ambas as plataformas, tanto 
@@ -35,7 +99,18 @@ O pthread é um padrão de threads para o POSIX, o qual é capaz de identificar 
 "newthread" é o nome que a thread trabalhará ao longo do programa, isto consignado ao "[NUM_THREADS]" já
 a criará no padrão antes especificado.
 
-## 8: 
+## 8: `for (i = 0; i < NUM_THREADS; i++) {`
+Ele executará um for que irá de 0 a 100 (valor definido em NUM_THREADS).
+
+## 9: `pid = pthread_create(&newthread[i], NULL, transferencia, NULL);`
+Pid pode ser interpretado como a digital de uma pessoa, a qual cada um tem uma distinta das demais.
+é criado uma thread a partir desde trecho: "pthread_create" porém necessita de alguns parâmetros como:
+o endereço de um pthread_t em específico, a função que ele executará quando for criado, NULL deixa em aberto 
+seu resultado, sendo que o mesmo pode ser alterado durante sua execução.
+
+## 10: `printf("A thread %lu foi criada\n", &newthread[i]);`
+Aqui ele printará a thread que foi gerada.
+
 
 
 
