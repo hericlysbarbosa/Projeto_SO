@@ -1,7 +1,7 @@
 # Projeto_Final SO
 
 Aluno: Hériclys Barbosa de Sousa
-
+Aluno: Samuel Saraiva 
 
 ## PROGRAMA ORIGINAL:
 
@@ -147,10 +147,10 @@ na outra conta (caso o teste seja feito com o valor inicial: 100).
 ## `Por que esta linguagem?`
 Recentemente tivemos oficinas de C, as quais nos permitiram compreender diversas novas formas de programar ou
 atribuir termos dentro da programação, embora a linguagem Python fosse a que utilizamos durante todo os nossos
-semestres, tive interesse em programar em C, embora isso tenha complicado muito o projeto também em permitiu
-estudar muito sobre uma linguagem a qual eu não estava acostumado. Por fim, foi escolhida como um desafio pessoal
-e também acreditei que conseguiria entregar um trabalho adequado mesmo tendo que estudar praticamente toda as possíveis
-aplicações que imaginei durante o programa.
+semestres, tivemos interesse em programar em C, embora isso tenha complicado muito o projeto também nós permitiu
+estudar muito sobre uma linguagem a qual eu não estavámos acostumados. Por fim, foi escolhida como um desafio pessoal
+e também acreditamos que conseguiríamos entregar um trabalho adequado mesmo tendo que estudar praticamente toda as possíveis
+aplicações que imaginamos durante o programa.
 
 
 
