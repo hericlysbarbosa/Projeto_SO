@@ -1,7 +1,7 @@
 # Projeto_Final SO
 
-Aluno: Hériclys Barbosa de Sousa
-Aluno: Samuel Saraiva 
+      Aluno: Hériclys Barbosa de Sousa
+      Aluno: Samuel Saraiva 
 
 ## PROGRAMA ORIGINAL:
 
