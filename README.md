@@ -115,15 +115,42 @@ Aqui ele printará a thread que foi gerada.
 Goto lhe permite pegar o código em determinado ponto e joga-lo em um distindo, sendo que " goto enuncado; "
 sever para atribuir onde ele será enviado para outro ponto e " enunciado: " onde o código voltará a executar.
 
-##`Executar o programa.`
+##`Executar o programa no Linux.`
 1- Ao abrir o terminal, coloque " mkdir " o que lhe permitirá criar um diretório. Exemplo: lab/projetofinal;
-2- Coloque " cd " e o nome do diretório criado para entrar no mesmo.
-3- Ao tentar compilar o programa, como utilizamos <pthread> deve-se incluir " -lpthread ". exemplo: gcc projetoFINAL -lpthread -o teste
+2- Coloque " cd " e o nome do diretório criado para entrar no mesmo;
+3- Ao tentar compilar o programa, como utilizamos <pthread> deve-se incluir " -lpthread ". exemplo: gcc projetoFINAL -lpthread -o teste;
 4- Por fim basta escrever " ./teste " ou ./ e o nome acrescentado.
+      
+## `Executar o programa no Windows.`
+1- Aperte a tecla Windows + R, que abrirá o executar do windows;
+2- Escreva " cmd " e clique com " OK ";
+3- Escreva " c:\ para alterar o diretório. Digite  md c:\simple e então o diretório estará criado e então digite c:\simple
+para entrar no diretório criado;
+4- Digite simple.c no prompt para compilá0lo;
+5- Por fim, digite simple.exe (simple caso este seja o nome que o usuário escolheu).
 
 ##`Como saber se funcinou?`
 Ao fim do programa, pode-se reparar que uma das contas estará zerada enquanto a outra receberá todo o valor que estava presente
 na outra conta (caso o teste seja feito com o valor inicial: 100).
+
+##´Fontes utilizadas ao longo do projeto.´
+https://youtu.be/1ks-oMotUjc
+https://youtu.be/ynCc-v0K-do
+https://www.modernescpp.com/index.php/race-condition-versus-data-race
+https://youtu.be/It0OFCbbTJE
+https://youtu.be/uA8X5zNOGw8
+https://www.youtube.com/watch?v=nVESQQg-Oiw&feature=youtu.be
+https://www.youtube.com/watch?v=nVESQQg-Oiw&feature=youtu.be
+https://docs.microsoft.com/pt-br/cpp/build/walkthrough-compile-a-c-program-on-the-command-line?view=vs-2019
+https://www.bogotobogo.com/cplusplus/RandomNumbers.php
+
+##Por que esta linguagem?
+Recentemente tivemos oficinas de C, as quais nos permitiram compreender diversas novas formas de programar ou
+atribuir termos dentro da programação, embora a linguagem Python fosse a que utilizamos durante todo os nossos
+semestres, tive interesse em programar em C, embora isso tenha complicado muito o projeto também em permitiu
+estudar muito sobre uma linguagem a qual eu não estava acostumado. Por fim, foi escolhida como um desafio pessoal
+e também acreditei que conseguiria entregar um trabalho adequado mesmo tendo que estudar praticamente toda as possíveis
+aplicações que imaginei durante o programa.
 
 
 
