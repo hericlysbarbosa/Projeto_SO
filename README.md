@@ -129,11 +129,11 @@ para entrar no diretório criado;
 4- Digite simple.c no prompt para compilá0lo;
 5- Por fim, digite simple.exe (simple caso este seja o nome que o usuário escolheu).
 
-##`Como saber se funcinou?`
+## `Como saber se funcinou?`
 Ao fim do programa, pode-se reparar que uma das contas estará zerada enquanto a outra receberá todo o valor que estava presente
 na outra conta (caso o teste seja feito com o valor inicial: 100).
 
-##`Fontes utilizadas ao longo do projeto.`
+## `Fontes utilizadas ao longo do projeto.`
             https://youtu.be/1ks-oMotUjc
             https://youtu.be/ynCc-v0K-do
             https://www.modernescpp.com/index.php/race-condition-versus-data-race
@@ -144,7 +144,7 @@ na outra conta (caso o teste seja feito com o valor inicial: 100).
             https://docs.microsoft.com/pt-br/cpp/build/walkthrough-compile-a-c-program-on-the-command-line?view=vs-2019
             https://www.bogotobogo.com/cplusplus/RandomNumbers.php
 
-##`Por que esta linguagem?`
+## `Por que esta linguagem?`
 Recentemente tivemos oficinas de C, as quais nos permitiram compreender diversas novas formas de programar ou
 atribuir termos dentro da programação, embora a linguagem Python fosse a que utilizamos durante todo os nossos
 semestres, tive interesse em programar em C, embora isso tenha complicado muito o projeto também em permitiu
