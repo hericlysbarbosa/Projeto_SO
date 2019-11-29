@@ -1,0 +1,123 @@
+#include <malloc.h>
+#include <stdio.h>
+#include <pthread.h>
+#define _OPEN_THREADS
+#define FIBER_STACK 1024*64
+#define NUM_THREADS 10
+#define _GNU_SOURCE
+
+static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+struct c {
+int saldo;
+};
+
+typedef struct c conta;
+
+conta from, to;
+int valor;
+
+void *devolve(void *arg){
+	pthread_mutex_lock(&mutex);
+	if (to.saldo>=valor){
+		to.saldo-=valor;
+		from.saldo+=valor;
+		printf( "Transferindo +10 para a conta c1\n" );
+        printf("Saldo de c1: %d\nSaldo de c2: %d\nTransferência concluída com sucesso!\n\n",from.saldo, to.saldo );
+	}
+pthread_mutex_unlock(&mutex);
+}
+
+void *transferencia(void *arg){
+	pthread_mutex_lock(&mutex);
+    if (from.saldo >= valor){
+        from.saldo -= valor;
+        to.saldo += valor;
+        printf( "Transferindo 10 para a conta c2\n" );
+        printf("Saldo de c1: %d\nSaldo de c2: %d\nTransferência concluída com sucesso!\n\n",from.saldo, to.saldo );
+        }
+    pthread_mutex_unlock(&mutex);
+}
+
+int main(){
+	
+    pthread_t newthread[NUM_THREADS];
+    void *stack;
+    pid_t pid;
+    int i;
+    from.saldo = 100;
+    to.saldo = 100;
+    valor = 10;
+    int op;
+    int ret;
+    int ct=0;
+    stack = malloc( FIBER_STACK );
+    enunciado:
+    printf("\n\nSe o dinheiro for de 1 > 2: digite [ 1 ]\nSe o dinheiro for de 2 > 1: digite [ 2 ] \n\n");
+    scanf("%d", &op);
+    
+    if (op==1){
+    ret_1:
+    for (i = 0; i < NUM_THREADS; i++) {
+    
+    
+    if ( stack == 0 ){
+        perror("malloc: could not allocate stack");
+        exit(1);
+    }
+   		
+        pid = pthread_create(&newthread[i], NULL, transferencia, NULL);
+       
+        if ( pid == -1 ){
+            perror( "Erro durante a criação do thread." );
+            exit(2);
+        }
+
+        printf("A thread %lu que executara: \n", &newthread[i]);
+       }
+	}
+	if (op==2){
+	ret_2:
+	for (i = 0; i < NUM_THREADS; i++) {
+    
+    if ( stack == 0 ){
+        perror("malloc: could not allocate stack");
+        exit(1);
+    }
+   		
+        pid = pthread_create(&newthread[i], NULL, devolve, NULL);
+       
+        if ( pid == -1 ){
+            perror( "Erro durante a criação do thread." );
+            exit(2);
+        }
+
+        printf("A thread %lu que executara: \n", &newthread[i]);
+       }
+	}
+	if (op!=1 && op!=2){
+		printf("Valor invalido. Tenta novamente.");
+	goto enunciado;
+	}
+	
+	printf("\n\nDeseja devolver o dinheiro? [1] para SIM e [0] para NAO\n\n");
+    scanf("%d", &ret);
+    while (ct<3){
+    	ct+=1;
+	if (ret==1 && op==1){
+		if (op==1){
+			goto ret_2;}
+		if (ret==1 && op==2){
+			goto ret_1;
+		}
+	}
+	if (ret==0){
+		goto terminou;
+	}
+	}
+	terminou:
+	printf("\nResultados finais: C1: %d e C2:%d",from.saldo,to.saldo);
+free ( stack );
+return 0;
+
+}
