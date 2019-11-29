@@ -3,7 +3,7 @@
 Aluno: Hériclys Barbosa de Sousa
 
 
-PROGRAMA ORIGINAL:
+## PROGRAMA ORIGINAL:
 
 #define _GNU_SOURCE
 #include <stdlib.h>
