@@ -1,0 +1,70 @@
+#include <malloc.h>
+#include <pthread.h>
+#include <stdio.h>
+#include <semaphore.h>
+#define NUM_THREADS 100
+#define FIBER_STACK 1024*64
+
+static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER; // NOVO
+
+struct c { //original
+int saldo; //original
+};//original
+
+typedef struct c conta; //original
+
+conta from, to; //original
+int valor; //original
+
+void *transferencia(void *arg){ // NOVO
+
+    //pthread_mutex_lock(&mutex); // NOVO
+    sem_wait(&mutex);
+   
+    if (from.saldo >= valor){ //original
+        from.saldo -= valor; //original
+        to.saldo += valor; //original
+        printf( "Transferindo 10 para a conta c2\n" ); // NO
+        printf("Saldo de c1: %d\nSaldo de c2: %d\nTransferência concluída com sucesso!\n\n",from.saldo, to.saldo ); //NOVO
+//pthread_mutex_unlock(&mutex); //NOVO
+sem_post(&mutex);
+        }
+       
+}
+
+int main(){ //original
+
+    pthread_t newthread[NUM_THREADS]; //NOVO
+    void *stack; //original
+    pid_t pid; //original
+    int i; //original
+    from.saldo = 100; //original
+    to.saldo = 100; //original
+    valor = 10; //original
+    sem_init(&mutex, 0, 1);
+   
+    for (i = 0; i < NUM_THREADS; i++) { //NOVO
+   
+    stack = malloc( FIBER_STACK ); //original
+   
+    if ( stack == 0 ){ //original
+        perror("malloc: could not allocate stack"); //original
+        exit(1); //original
+    }
+   
+        pid = pthread_create(&newthread[i], NULL, transferencia, NULL); // NOVO
+       
+        if ( pid == -1 ){ //original
+            perror( "Erro durante a criação do thread." ); //original
+            exit(2); //original
+        }
+
+        printf("A thread %lu foi criada\n", &newthread[i]); //NOVO
+       
+}
+sem_destroy(&mutex);
+free ( stack ); //original
+printf("Transferências concluídas e memória liberada\n"); //original
+return 0;//original
+
+}
