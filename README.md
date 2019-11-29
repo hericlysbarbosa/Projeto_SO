@@ -116,7 +116,6 @@ Goto lhe permite pegar o código em determinado ponto e joga-lo em um distindo, 
 sever para atribuir onde ele será enviado para outro ponto e " enunciado: " onde o código voltará a executar.
 
 ##`Executar o programa.`
-Tutorial em Linux:
 1- Ao abrir o terminal, coloque " mkdir " o que lhe permitirá criar um diretório. Exemplo: lab/projetofinal;
 2- Coloque " cd " e o nome do diretório criado para entrar no mesmo.
 3- Ao tentar compilar o programa, como utilizamos <pthread> deve-se incluir " -lpthread ". exemplo: gcc projetoFINAL -lpthread -o teste
