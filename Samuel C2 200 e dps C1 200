@@ -1,0 +1,97 @@
+#include <malloc.h>
+#include <stdio.h>
+#include <pthread.h>
+#define _OPEN_THREADS
+#define FIBER_STACK 1024*64
+#define NUM_THREADS 100
+#define _GNU_SOURCE
+
+static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+struct c {
+int saldo;
+};
+
+typedef struct c conta;
+
+conta from, to;
+int valor;
+
+void *devolve(void *arg){
+	pthread_mutex_lock(&mutex);
+	if (to.saldo>=valor){
+		to.saldo-=valor;
+		from.saldo+=valor;
+		printf( "Transferindo +10 para a conta c1\n" );
+        printf("Saldo de c1: %d\nSaldo de c2: %d\nTransferência concluída com sucesso!\n\n",from.saldo, to.saldo );
+	}
+pthread_mutex_unlock(&mutex);
+}
+
+void *transferencia(void *arg){
+	pthread_mutex_lock(&mutex);
+    if (from.saldo >= valor){
+        from.saldo -= valor;
+        to.saldo += valor;
+        printf( "Transferindo +10 para a conta c2\n" );
+        printf("Saldo de c1: %d\nSaldo de c2: %d\nTransferência concluída com sucesso!\n\n",from.saldo, to.saldo );
+        }
+    pthread_mutex_unlock(&mutex);
+}
+
+int main(){
+	
+    pthread_t newthread[NUM_THREADS];
+    void *stack;
+    pid_t pid;
+    int i;
+    from.saldo = 100;
+    to.saldo = 100;
+    valor = 10;
+    int op;
+    stack = malloc( FIBER_STACK );
+    int ct=0;
+    
+    for (i = 0; i < NUM_THREADS; i++) {
+    ct+=1;
+    if ( stack == 0 ){
+        perror("malloc: could not allocate stack");
+        exit(1);
+    }
+   		
+        pid = pthread_create(&newthread[i], NULL, transferencia, NULL);
+       
+        if ( pid == -1 ){
+            perror( "Erro durante a criação do thread." );
+            exit(2);
+        }
+
+        printf("A thread %lu que executara: \n", &newthread[i]);
+       }
+       
+	if (ct>1){
+		printf("\nAGORA ESTAMOS DEVOLVENDO A GRANA\n");
+		
+	for (i = 0; i < NUM_THREADS; i++) {
+    
+    if ( stack == 0 ){
+        perror("malloc: could not allocate stack");
+        exit(1);
+    }
+   		
+        pid = pthread_create(&newthread[i], NULL, devolve, NULL);
+       
+        if ( pid == -1 ){
+            perror( "Erro durante a criação do thread." );
+            exit(2);
+        }
+
+        printf("A thread %lu que executara: \n", &newthread[i]);
+       }
+	}
+	printf("\nOs valores sao: C1: %d e C2: %d",from.saldo, to.saldo);
+
+free ( stack );
+return 0;
+
+}
