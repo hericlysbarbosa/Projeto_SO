@@ -133,18 +133,18 @@ para entrar no diretório criado;
 Ao fim do programa, pode-se reparar que uma das contas estará zerada enquanto a outra receberá todo o valor que estava presente
 na outra conta (caso o teste seja feito com o valor inicial: 100).
 
-##´Fontes utilizadas ao longo do projeto.´
-https://youtu.be/1ks-oMotUjc
-https://youtu.be/ynCc-v0K-do
-https://www.modernescpp.com/index.php/race-condition-versus-data-race
-https://youtu.be/It0OFCbbTJE
-https://youtu.be/uA8X5zNOGw8
-https://www.youtube.com/watch?v=nVESQQg-Oiw&feature=youtu.be
-https://www.youtube.com/watch?v=nVESQQg-Oiw&feature=youtu.be
-https://docs.microsoft.com/pt-br/cpp/build/walkthrough-compile-a-c-program-on-the-command-line?view=vs-2019
-https://www.bogotobogo.com/cplusplus/RandomNumbers.php
+##`Fontes utilizadas ao longo do projeto.`
+            https://youtu.be/1ks-oMotUjc
+            https://youtu.be/ynCc-v0K-do
+            https://www.modernescpp.com/index.php/race-condition-versus-data-race
+            https://youtu.be/It0OFCbbTJE
+            https://youtu.be/uA8X5zNOGw8
+            https://www.youtube.com/watch?v=nVESQQg-Oiw&feature=youtu.be
+            https://www.youtube.com/watch?v=nVESQQg-Oiw&feature=youtu.be
+            https://docs.microsoft.com/pt-br/cpp/build/walkthrough-compile-a-c-program-on-the-command-line?view=vs-2019
+            https://www.bogotobogo.com/cplusplus/RandomNumbers.php
 
-##Por que esta linguagem?
+##`Por que esta linguagem?`
 Recentemente tivemos oficinas de C, as quais nos permitiram compreender diversas novas formas de programar ou
 atribuir termos dentro da programação, embora a linguagem Python fosse a que utilizamos durante todo os nossos
 semestres, tive interesse em programar em C, embora isso tenha complicado muito o projeto também em permitiu
